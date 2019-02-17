@@ -6,8 +6,9 @@
  */
 
 require('./bootstrap');
+const Vue = window.Vue = require('vue')
 
-window.Vue = require('vue');
+Vue.prototype.$_ = require('lodash')
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,5 +30,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app'
-});
+    el: '#app',
+})
+
+export default app
