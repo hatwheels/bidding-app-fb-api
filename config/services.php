@@ -40,4 +40,11 @@ return [
         ],
     ],
 
+    // Configuration for Facebook Adapter of Socialite package
+    'facebook' => [
+        'client_id' => env('FACEBOOK_KEY'),
+        'client_secret' => env('FACEBOOK_SECRET'),
+        'redirect' => '/home'//env('FACEBOOK_REDIRECT_URI')
+    ],
+
 ];

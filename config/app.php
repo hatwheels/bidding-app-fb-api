@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        \SocialiteProviders\Manager\ServiceProvider::class, //Facebook Provider for Socialite package
 
         /*
          * Application Service Providers...
