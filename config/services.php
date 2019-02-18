@@ -44,7 +44,7 @@ return [
     'facebook' => [
         'client_id' => env('FACEBOOK_KEY'),
         'client_secret' => env('FACEBOOK_SECRET'),
-        'redirect' => '/home'//env('FACEBOOK_REDIRECT_URI')
+        'redirect' => env('FACEBOOK_REDIRECT_URI', 'http://192.168.10.10/callback')
     ],
 
 ];

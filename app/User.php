@@ -28,6 +28,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function facebookAccount()
+    {
+        return $this->hasOne(FacebookAccount::class);
+    }
+
     public function bids()
     {
         return $this->hasMany(Bid::class);
