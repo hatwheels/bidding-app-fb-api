@@ -13,15 +13,15 @@ class ProductsTableSeeder extends Seeder
     {
         factory(\App\Product::class)->create([
             'name' => 'Headphones',
-            'avatar' => 'product/avatar/headphones.jpg',
+            'avatar' => 'product/avatars/headphones.jpg',
         ]);
         factory(\App\Product::class)->create([
             'name' => 'Tablet',
-            'avatar' => 'product/avatar/tablet.jpg',
+            'avatar' => 'product/avatars/tablet.jpg',
         ]);
         factory(\App\Product::class)->create([
             'name' => 'Laptop',
-            'avatar' => 'product/avatar/laptop.jpg',
+            'avatar' => 'product/avatars/laptop.jpg',
         ]);
     }
 }
