@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/redirect', 'AuthFacebookController@redirect');
 Route::get('/callback', 'AuthFacebookController@callback');
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/products', 'ProductController@index')->name('products');
+Route::get('/products/auction', 'ProductController@auction')->name('products.auction');
