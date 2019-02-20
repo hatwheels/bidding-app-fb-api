@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Product;
+use App\Bid;
 
 class ProductController extends Controller
 {
@@ -18,16 +20,18 @@ class ProductController extends Controller
         $collection = collect();
 
         foreach ($products as $product) {
-            $bid = $product->bids()->orderBy('created_at', 'desc')->first();
+            $bid = $product->bids()->orderBy('created_at', 'desc')->take(1)->get()->flatten();
+            if ($bid) {
+                $bid = Bid::find($bid->first()['id']);
+            }
             $collection->push([
                 'id' => $product->id,
                 'name' => $product->name,
                 'avatar' => $product->avatar,
                 'price' => $product->price,
-                'latest_bid' => $bid ? $bid->name : '-'
+                'latest_bid' => $bid ? $bid->user->name : '-'
             ]);
         }
-
         return view('products.index')
             ->with('products', $collection);
     }
@@ -46,6 +50,22 @@ class ProductController extends Controller
 
     public function bid(Request $request)
     {
+        $request->validate([
+            'bid' => 'required|numeric',
+        ]);
 
+        $product = Product::findOrFail($request->productId);
+
+        if ($request->bid > $product->price) {
+            $user = $request->user();
+            $user->bids()->create([
+                'product_id' => $product->id,
+                'price' => $request->bid,
+            ]);
+            $product->price = $request->bid;
+            $product->save();
+            return redirect(route('products.auction', $product->id));
+        }
+        return back()->withError('Please place a bid higher than the current price!')->withInput();
     }
 }

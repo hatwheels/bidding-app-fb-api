@@ -9,11 +9,8 @@
                     {{ $product['name'] }}
                 </a>
             </div>
-            <div class="font-semibold text-center">Current: {{ $product['price'] }}</div>
+            <div class="font-semibold text-center">Current: {{ number_format($product['price'], 2, '.', '') }}</div>
             <div class="text-center">Latest bid by: {{ $product['latest_bid'] }}</div>
-                        {{-- <div>{{ App\User::findOrFail($bid->user_id)->name }}</div>
-                        <div>{{ $bid->price }}</div>
-                        <div>{{ Carbon\Carbon::instance($bid->created_at)->format('jS F Y H:i T') }}</div> --}}
             <img class="w-6 h-6"
                 src="{{ asset('storage/' . $product['avatar']) }}"
                 alt="product-avatar"/>
