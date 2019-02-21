@@ -16,6 +16,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/redirect', 'AuthFacebookController@redirect');
 Route::get('/callback', 'AuthFacebookController@callback');
+Route::get('/bids', 'BidController@index')->name('bids');
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/products/{product}/auction', 'ProductController@auction')->name('products.auction');
 Route::post('products/{product}/bid', 'ProductController@bid')->name('products.bid');
