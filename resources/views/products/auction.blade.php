@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('sidebar')
+@include('_partials.sidebar')
+@endsection
+
 @section('content')
 <div class="flex flex-row bg-white">
     <div class="flex">

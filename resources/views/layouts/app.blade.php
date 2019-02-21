@@ -93,6 +93,12 @@
             </div>
         </nav>
 
+        <div class="flex flex-1 px-4">
+            @hasSection ('sidebar')
+                @yield('sidebar')
+            @endif
+        </div>
+
         <main class="py-4">
             @yield('content')
         </main>
