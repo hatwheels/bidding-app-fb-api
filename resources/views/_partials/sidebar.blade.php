@@ -1,9 +1,13 @@
-<div class="h-full flex flex-col flex-no-shrink">
-    <div class="flex-grow overflow-y-auto bg-black py-4">
-        <div class="flex flex-col my-6">
-            <a href="{{ route('products') }}">Product List</a>
+<div class="bg-teal-dark h-full w-32 flex flex-col items-start">
+        <a class="flex no-underline w-full text-grey-light py-4 hover:bg-teal"
+            href="{{ route('products') }}"
+        >
+            <span class="mx-4 tracking-wide">Product List</span>
+        </a>
 
-        </div>
-        <a href="{{ route('bids') }}">Your Bids</a>
-    </div>
+        <a class="flex no-underline w-full text-grey-light py-4 hover:bg-teal"
+            href="{{ route('bids') }}"
+        >
+            <span class="mx-4 tracking-wide">My bids</span>
+        </a>
 </div>

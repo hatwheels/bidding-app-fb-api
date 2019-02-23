@@ -11,10 +11,23 @@
 |
 */
 
-Auth::routes();
+//Auth::routes();
+// Authentication Routes...
+Route::get('login', [
+    'as' => 'login',
+    'uses' => 'Auth\LoginController@showLoginForm'
+]);
+Route::post('login', [
+    'as' => '',
+    'uses' => 'Auth\LoginController@login'
+]);
+Route::post('logout', [
+    'as' => 'logout',
+    'uses' => 'Auth\LoginController@logout'
+]);
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/redirect', 'AuthFacebookController@redirect');
+Route::get('/redirect', 'AuthFacebookController@redirect')->name('redirect');
 Route::get('/callback', 'AuthFacebookController@callback');
 Route::get('/bids', 'BidController@index')->name('bids');
 Route::get('/products', 'ProductController@index')->name('products');

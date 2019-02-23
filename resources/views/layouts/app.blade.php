@@ -39,46 +39,39 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+<body class="h-screen w-screen font-sans antialiased">
+    <div id="app" class="h-full w-full">
+        <div class="h-full w-full flex flex-col">
+            <nav class="bg-grey-lightest w-full h-16 border-t-4 border-teal">
+                <div class="flex items-center justify-between border-b border-grey-light h-full">
+                    {{-- <a class="text-xl text-grey-darkest font-bold no-underline px-4 hover:text-teal" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a> --}}
+                    <a href="{{ url('/') }}">
+                        <img class="block h-12 w-12 ml-8"
+                            src="{{ asset('/img/icons/favicon-32x32.png') }}"
+                            alt="bidding-app-logo">
+                    </a>
+                    <div class="pr-4 text-lg">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                            <a class="mr-2 text-grey-darkest no-underline hover:text-teal" href="{{ route('login') }}">{{ __('Login') }}</a>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                <a class="text-grey-darkest no-underline hover:text-teal" href="{{ route('register') }}">{{ __('Register') }}</a>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <div class="ml-auto">
+                                <a id="navbarDropdown" class="" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -86,22 +79,22 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </div>
                         @endguest
-                    </ul>
+                    </div>
                 </div>
+            </nav>
+
+            <div class="flex flex-1">
+                @hasSection ('sidebar')
+                    @yield('sidebar')
+                @endif
+
+                <main class="flex-grow overflow-y-auto">
+                    @yield('content')
+                </main>
             </div>
-        </nav>
-
-        <div class="flex flex-1 px-4">
-            @hasSection ('sidebar')
-                @yield('sidebar')
-            @endif
         </div>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
 </body>
 </html>
