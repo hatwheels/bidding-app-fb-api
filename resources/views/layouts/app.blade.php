@@ -45,8 +45,8 @@
 <body class="h-screen w-screen font-sans antialiased">
     <div id="app" class="h-full w-full">
         <div class="h-full w-full flex flex-col">
-            <nav class="bg-teal-light w-full h-16 ">
-                <div class="flex items-center justify-between h-full">
+            <nav class="bg-grey-lighter w-full h-16 border-t-2 border-teal">
+                <div class="flex items-center justify-between h-full border-b border-grey">
                     <a href="{{ url('/') }}">
                         <img class="block h-12 w-12 ml-8"
                             src="{{ asset('/img/icons/favicon-32x32.png') }}"
@@ -55,7 +55,7 @@
                     <div class="text-lg">
                         <!-- Authentication Links -->
                         @guest
-                            <a class="mr-2 text-grey-darkest no-underline hover:text-teal" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="mr-4 font-semibold text-teal-dark no-underline hover:text-teal-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                             @if (Route::has('register'))
                                 <a class="text-grey-darkest no-underline hover:text-teal" href="{{ route('register') }}">{{ __('Register') }}</a>
                             @endif
