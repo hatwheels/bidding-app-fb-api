@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('sidebar')
-@include('_partials.sidebar')
-@endsection
-
 @section('content')
 <div class="my-2 mx-4 w-full">
     <h2 class="my-2 pb-2 w-full font-normal text-3xl border-b border-grey-light">{{ $product->name }}</h2>

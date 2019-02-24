@@ -45,8 +45,8 @@
 <body class="h-screen w-screen font-sans antialiased">
     <div id="app" class="h-full w-full">
         <div class="h-full w-full flex flex-col">
-            <nav class="bg-grey-lightest w-full h-16 border-t-4 border-teal">
-                <div class="flex items-center justify-between border-b border-grey-light h-full">
+            <nav class="bg-teal-light w-full h-16 ">
+                <div class="flex items-center justify-between h-full">
                     <a href="{{ url('/') }}">
                         <img class="block h-12 w-12 ml-8"
                             src="{{ asset('/img/icons/favicon-32x32.png') }}"
@@ -63,8 +63,24 @@
                             <user-menu avatar="{{ asset('storage/' . Auth::user()->avatar) }}">
                                 <template slot="menu-items">
                                     <div class="w-full h-full">
+                                        <a class="inline-block p-4 no-underline w-full text-black hover:bg-teal-dark hover:text-grey-lighter"
+                                            href="{{ route('products') }}"
+                                        >
+                                            {{ __('Product List') }}
+                                        </a>
+                                    </div>
+
+                                    <div class="w-full h-full">
+                                        <a class="inline-block p-4 no-underline w-full text-black hover:bg-teal-dark hover:text-grey-lighter"
+                                            href="{{ route('bids') }}"
+                                        >
+                                            {{ __('My Bids') }}
+                                        </a>
+                                    </div>
+
+                                    <div class="w-full h-full">
                                         <a href="{{ route('logout') }}"
-                                            class="inline-block p-4 no-underline w-full text-black hover:bg-teal-darker hover:text-grey-lighter"
+                                            class="inline-block p-4 no-underline w-full text-black hover:bg-teal-dark hover:text-grey-lighter"
                                             onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                                         >
                                             {{ __('Logout') }}
@@ -82,10 +98,6 @@
             </nav>
 
             <div class="flex flex-1">
-                @hasSection ('sidebar')
-                    @yield('sidebar')
-                @endif
-
                 <main class="flex-grow overflow-y-auto">
                     @yield('content')
                 </main>
