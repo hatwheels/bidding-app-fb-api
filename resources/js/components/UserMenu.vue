@@ -17,12 +17,12 @@
     </div>
 
     <div
-      ref="dropdown"
-      class="bg-white w-1/5 shadow-md"
+        ref="dropdown"
+        class="w-1/5 shadow-md"
     >
-      <div :class="{ hidden }">
+    <div class="bg-white" :class="{ hidden }">
         <slot name="menu-items" />
-      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -51,6 +51,15 @@ export default {
   mounted () {
     this.popper = new Popper(this.$refs.userMenu, this.$refs.dropdown, {
       placement: 'bottom-end',
+      modifiers: {
+          offset: {
+            enabled: true,
+            offset: "0, 10",
+          },
+          keepTogether: {
+            enabled: false
+        },
+      },
     })
 
     this.$nextTick(this.popper.scheduleUpdate)

@@ -15,12 +15,12 @@ Vue.prototype.$_ = require('lodash')
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
  *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('user-menu', require('./components/UserMenu.vue').default);
 Vue.use(require('./directives/click-outside').default);
 

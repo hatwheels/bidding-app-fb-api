@@ -47,15 +47,12 @@
         <div class="h-full w-full flex flex-col">
             <nav class="bg-grey-lightest w-full h-16 border-t-4 border-teal">
                 <div class="flex items-center justify-between border-b border-grey-light h-full">
-                    {{-- <a class="text-xl text-grey-darkest font-bold no-underline px-4 hover:text-teal" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a> --}}
                     <a href="{{ url('/') }}">
                         <img class="block h-12 w-12 ml-8"
                             src="{{ asset('/img/icons/favicon-32x32.png') }}"
                             alt="bidding-app-logo">
                     </a>
-                    <div class="pr-4 text-lg">
+                    <div class="text-lg">
                         <!-- Authentication Links -->
                         @guest
                             <a class="mr-2 text-grey-darkest no-underline hover:text-teal" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -63,23 +60,22 @@
                                 <a class="text-grey-darkest no-underline hover:text-teal" href="{{ route('register') }}">{{ __('Register') }}</a>
                             @endif
                         @else
-                            <div class="ml-auto">
-                                <a id="navbarDropdown" class="" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                            <user-menu avatar="{{ asset('storage/' . Auth::user()->avatar) }}">
+                                <template slot="menu-items">
+                                    <div class="w-full h-full">
+                                        <a href="{{ route('logout') }}"
+                                            class="inline-block p-4 no-underline w-full text-black hover:bg-teal-darker hover:text-grey-lighter"
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                        >
+                                            {{ __('Logout') }}
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </div>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </a>
+                                    </div>
+                                </template>
+                            </user-menu>
                         @endguest
                     </div>
                 </div>
