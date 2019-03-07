@@ -7,7 +7,7 @@
     <div class="pt-8">
         <div class="mx-auto w-3/4 flex flex-row pb-4 border-b border-teal">
             <img class="block h-64 w-64 mx-2 my-auto"
-                src="{{ asset('storage/' . $product->avatar) }}"
+                src="{{ $product->avatar }}"
                 alt="product-avatar"/>
             <div class="flex flex-col justify-between m-4">
                 <div class="italic">Current price:
