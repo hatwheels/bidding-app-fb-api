@@ -10,7 +10,7 @@
                 <div class="flex flex-col h-full">
                     <div class="flex flex-row flex-grow">
                         <img class="block h-24 mx-2 my-auto"
-                            src="{{ asset('storage/' . $product['avatar']) }}"
+                            src="{{ $product['avatar'] }}"
                             alt="product-avatar"/>
                         <div class="flex flex-col mx-2 my-2 flex-grow">
                             <a class="my-1 font-bold text-teal-darker no-underline hover:underline hover:text-teal-dark"
