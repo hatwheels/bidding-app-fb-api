@@ -45,8 +45,8 @@
 <body class="h-screen w-screen font-sans antialiased">
     <div id="app" class="h-full w-full">
         <div class="h-full w-full flex flex-col">
-            <nav class="bg-grey-lightest w-full h-16 border-t-4 border-teal">
-                <div class="flex items-center justify-between border-b border-grey-light h-full">
+            <nav class="bg-grey-lighter w-full h-16 border-t-2 border-teal">
+                <div class="flex items-center justify-between h-full border-b border-grey">
                     <a href="{{ url('/') }}">
                         <img class="block h-12 w-12 ml-8"
                             src="{{ asset('/img/icons/favicon-32x32.png') }}"
@@ -55,7 +55,7 @@
                     <div class="text-lg">
                         <!-- Authentication Links -->
                         @guest
-                            <a class="mr-2 text-grey-darkest no-underline hover:text-teal" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="mr-4 font-semibold text-teal-dark no-underline hover:text-teal-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                             @if (Route::has('register'))
                                 <a class="text-grey-darkest no-underline hover:text-teal" href="{{ route('register') }}">{{ __('Register') }}</a>
                             @endif
@@ -63,8 +63,24 @@
                             <user-menu avatar="{{ asset('storage/' . Auth::user()->avatar) }}">
                                 <template slot="menu-items">
                                     <div class="w-full h-full">
+                                        <a class="inline-block p-4 no-underline w-full text-black hover:bg-teal-dark hover:text-grey-lighter"
+                                            href="{{ route('products') }}"
+                                        >
+                                            {{ __('Product List') }}
+                                        </a>
+                                    </div>
+
+                                    <div class="w-full h-full">
+                                        <a class="inline-block p-4 no-underline w-full text-black hover:bg-teal-dark hover:text-grey-lighter"
+                                            href="{{ route('bids') }}"
+                                        >
+                                            {{ __('My Bids') }}
+                                        </a>
+                                    </div>
+
+                                    <div class="w-full h-full">
                                         <a href="{{ route('logout') }}"
-                                            class="inline-block p-4 no-underline w-full text-black hover:bg-teal-darker hover:text-grey-lighter"
+                                            class="inline-block p-4 no-underline w-full text-black hover:bg-teal-dark hover:text-grey-lighter"
                                             onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                                         >
                                             {{ __('Logout') }}
@@ -82,10 +98,6 @@
             </nav>
 
             <div class="flex flex-1">
-                @hasSection ('sidebar')
-                    @yield('sidebar')
-                @endif
-
                 <main class="flex-grow overflow-y-auto">
                     @yield('content')
                 </main>
